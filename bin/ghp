@@ -1,0 +1,68 @@
+#!/usr/bin/env node
+/* eslint-disable no-console, no-param-reassign */
+
+const program = require('commander');
+
+const fastImport = require('../lib/fast-import');
+const fileFind = require('../lib/file-find');
+const { createTag, push } = require('../lib/git-util');
+const { ensureDirectory } = require('../lib/util');
+const pkg = require('../package.json');
+
+function main(args) {
+  program
+    .version(pkg.version)
+    .option('-d, --dist <dist>', 'Source directory')
+    .option('-s, --src <src>', 'Minimatch pattern for publishable files', '**/*')
+    .option('-b, --branch <branch>', 'Branch to create commit in', 'gh-pages')
+    .option('-e, --dest <dest>', 'Target directory within the destination branch', '.')
+    .option('-a, --add', 'Only add, and never remove existing files')
+    .option('-m, --message <message>', 'Commit message', 'Updates')
+    .option('-g, --tag <tag>', 'Add tag to commit')
+    .option('-o, --remote <name>', 'The name of the remote (if pushing)', 'origin')
+    .option('-p, --push', 'Push the branch after creating the commit')
+    .option('-j, --nojekyll', 'Synthesize a .nojekyll file')
+    .parse(args);
+
+  const options = {
+    branch: program.branch,
+    message: program.message,
+    directory: program.dest,
+    clean: !program.add,
+  };
+
+  if (program.dist === undefined) {
+    console.error('Source directory required.');
+    process.exit(1);
+  }
+
+  ensureDirectory(program.dist)
+    .then(() => fileFind.findFiles(program.dist, program.src))
+    .then((fileMap) => {
+      if (program.nojekyll) {
+        fileMap['.nojekyll'] = { contents: '' };
+      }
+      console.log(`Creating commit with ${Object.keys(fileMap).length} files...`);
+      return fastImport.runImport(fileMap, options);
+    })
+    .then((revision) => {
+      console.log(`Created revision ${revision}`);
+      if (program.tag) {
+        console.log(`Creating tag ${program.tag}...`);
+        return createTag(program.tag, program.message, revision);
+      }
+      return true;
+    })
+    .then(() => (program.push ? push(program.remote, program.branch) : true))
+    .then(() => console.log('OK!'))
+    .catch((err) => {
+      console.error(err);
+      process.exit(2);
+    });
+}
+
+if (require.main === module) {
+  main(process.argv);
+}
+
+module.exports = main;

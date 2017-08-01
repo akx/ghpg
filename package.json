@@ -7,5 +7,16 @@
     "eslint": "^4.3.0",
     "eslint-config-airbnb-base": "^11.3.1",
     "eslint-plugin-import": "^2.7.0"
+  },
+  "dependencies": {
+    "commander": "^2.11.0",
+    "glob": "^7.1.2",
+    "unorm": "^1.4.1"
+  },
+  "bin": {
+    "ghp": "bin/ghp"
+  },
+  "scripts": {
+    "lint": "eslint ."
   }
 }
