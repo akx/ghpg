@@ -18,5 +18,16 @@
   },
   "scripts": {
     "lint": "eslint ."
+  },
+  "homepage": "https://github.com/akx/ghpg",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/akx/ghpg.git"
+  },
+  "bugs": {
+    "url": "https://github.com/akx/ghpg/issues"
+  },
+  "engines": {
+    "node": ">=6"
   }
 }
