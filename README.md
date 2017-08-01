@@ -1,5 +1,5 @@
-ghp
-===
+ghpg
+====
 
 Easily publish a directory to `gh-pages` (or another branch really).
 
@@ -10,12 +10,12 @@ so there is no intermediate checkout step or cache shenanigans.
 
 ## Usage
 
-The command-line usage and parameter naming of `ghp` mirrors that of `gh-pages`,
+The command-line usage and parameter naming of `ghpg` mirrors that of `gh-pages`,
 but the branch is *not pushed by default* (use `--push` for that).
 
 ```
 
-  Usage: ghp [options]
+  Usage: ghpg [options]
 
 
   Options:
@@ -35,4 +35,4 @@ but the branch is *not pushed by default* (use `--push` for that).
 
 ### Programmatic usage
 
-The bits and pieces `ghp` uses to do its magic are modularized and promise-based; see `bin/ghp` how to use them.
+The bits and pieces `ghpg` uses to do its magic are modularized and promise-based; see `bin/ghpg` how to use them.

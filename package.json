@@ -1,5 +1,5 @@
 {
-  "name": "ghp",
+  "name": "ghpg",
   "version": "1.0.0",
   "main": "index.js",
   "license": "MIT",
@@ -14,7 +14,7 @@
     "unorm": "^1.4.1"
   },
   "bin": {
-    "ghp": "bin/ghp"
+    "ghpg": "bin/ghpg"
   },
   "scripts": {
     "lint": "eslint ."
