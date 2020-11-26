@@ -20,7 +20,7 @@
   },
   "scripts": {
     "lint": "eslint .",
-    "test": "echo todo",
+    "test": "bash ./test/smoketest.sh",
     "prettier-check": "prettier --check bin/ghpg lib/*.js*",
     "prettify": "prettier --write bin/ghpg lib/*.js*"
   },
