@@ -19,6 +19,8 @@
   },
   "scripts": {
     "lint": "eslint .",
+    "test": "echo todo",
+    "prettier-check": "prettier --check bin/ghpg lib/*.js*",    
     "prettify": "prettier --write bin/ghpg lib/*.js*"
   },
   "homepage": "https://github.com/akx/ghpg",
