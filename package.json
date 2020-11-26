@@ -4,14 +4,15 @@
   "main": "index.js",
   "license": "MIT",
   "devDependencies": {
-    "eslint": "^6.6.0",
-    "eslint-config-airbnb-base": "^14.0.0",
-    "eslint-plugin-import": "^2.18.2",
-    "prettier": "^1.18.2"
+    "eslint": "^7.14.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-config-prettier": "^6.15.0",
+    "eslint-plugin-import": "^2.22.1",
+    "prettier": "^2.2.0"
   },
   "dependencies": {
-    "commander": "^3.0.2",
-    "glob": "^7.1.5",
+    "commander": "^6.2.0",
+    "glob": "^7.1.6",
     "unorm": "^1.6.0"
   },
   "bin": {
@@ -20,7 +21,7 @@
   "scripts": {
     "lint": "eslint .",
     "test": "echo todo",
-    "prettier-check": "prettier --check bin/ghpg lib/*.js*",    
+    "prettier-check": "prettier --check bin/ghpg lib/*.js*",
     "prettify": "prettier --write bin/ghpg lib/*.js*"
   },
   "homepage": "https://github.com/akx/ghpg",
